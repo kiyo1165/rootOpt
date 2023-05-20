@@ -11,8 +11,6 @@ PRIORITY = (
 
 class Client(models.Model):
     client_name = models.CharField(max_length=100)
-    fixed_reservation_day = models.DateField()
-    fixed_reservation_time = models.TimeField()
     zip_code_regex = RegexValidator(
         regex=r'^[0-9]+$', message=("郵便番号の入力規則例: 123-4433 →'1234567'"))
     zip_code = models.CharField(

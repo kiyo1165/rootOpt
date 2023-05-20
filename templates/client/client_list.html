@@ -1,1 +1,11 @@
-hello
+<h2>Client_list</h2>
+<table class="table">
+  <thead>
+    <tr><th>client</th></tr>
+  </thead>
+  <tbody>
+    {% for client in client_list %}
+    <tr><td>{{ client.client_name }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
