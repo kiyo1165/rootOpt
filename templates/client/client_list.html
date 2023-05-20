@@ -5,7 +5,9 @@
   </thead>
   <tbody>
     {% for client in client_list %}
-    <tr><td>{{ client.client_name }}</td></tr>
+    <tr>
+        <td><a href="{% url 'client:detail' client.pk %}">{{ client.client_name }}</a></td>
+    </tr>
     {% endfor %}
   </tbody>
 </table>
