@@ -15,3 +15,7 @@ if geocode_result:
     print(f"緯度: {location['lat']}, 経度: {location['lng']}")
 else:
     print("結果が見つかりませんでした。")
+
+
+def split_array(array, size):
+    return [array[i:i+size] for i in range(0, len(array), size)]

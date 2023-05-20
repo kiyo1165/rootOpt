@@ -22,8 +22,8 @@ class Client(models.Model):
     address = models.CharField(max_length=100, verbose_name="番地")
     Buil_name = models.CharField(max_length=100, verbose_name="建物名・部屋番号")
     priority = models.CharField(choices=PRIORITY, max_length=1)
-    reservation_day = models.DateField()
-    reservation_time = models.TimeField()
+    longitude = models.FloatField(blank=True, null=True, verbose_name="緯度")
+    latitude = models.FloatField(blank=True, null=True, verbose_name="経度")
     visitplan = models.ForeignKey(
         VisitPlan, on_delete=models.CASCADE, related_name="clients")
 
