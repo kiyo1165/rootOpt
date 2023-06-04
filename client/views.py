@@ -1,10 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from client.models import Client
-from django.shortcuts import render
 from .forms import ClientFrom
-from django.urls import reverse_lazy
-import googlemaps
+from django.urls import reverse_lazy, reverse
 from .google import getGoogleapi
 
 
@@ -15,14 +12,6 @@ class ClientListView(ListView):
     model = Client
     template_name = "client/client_list.html"
     context_object_name = "client_list"
-
-
-def clientindex(request):
-    client_list = Client.objects.all()
-    context = {
-        "client_list": client_list,
-    }
-    return render(request, "client/client_list.html", context)
 
 
 class ClientDetailView(DetailView):
@@ -48,4 +37,16 @@ class ClientCreateView(CreateView):
         return super().form_valid(form)
 
 
+class ClientUpdateView(UpdateView):
+    model = Client
+    fields = "__all__"
+    template_name = "client/client_update.html"
 
+    def get_success_url(self):
+        return reverse('client:detail', kwargs={'pk': self.object.pk})
+
+
+class ClientDeleteView(DeleteView):
+    model = Client
+    template_name = "client/client_delete.html"
+    success_url = reverse_lazy("client:list")

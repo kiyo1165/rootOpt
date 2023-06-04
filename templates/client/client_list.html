@@ -6,7 +6,9 @@
   <tbody>
     {% for client in client_list %}
     <tr>
-        <td><a href="{% url 'client:detail' client.pk %}">{{ client.client_name }}</a></td>
+      <td><a href="{% url 'client:detail' client.pk %}">{{ client.client_name }}</a></td>
+      <td><button onclick="location.href='{% url 'client:delete' client.pk %}'">削除</button></td>
+       <td><button onclick="location.href='{% url 'client:update' client.pk %}'">編集</button></td>
     </tr>
     {% endfor %}
   </tbody>
