@@ -1,7 +1,10 @@
 from django.urls import path
 
-from . import views
+from .views import PlanListView, PlanCreateView
 
+app_name = "dr"
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("visitplan_list", PlanListView.as_view(), name="visitplan_list"),
+    path("visitplan_create", PlanCreateView.as_view(), name="visitplan_create"),
+
 ]

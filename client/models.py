@@ -9,6 +9,7 @@ PRIORITY = (
 )
 
 
+
 class Client(models.Model):
     client_name = models.CharField(max_length=100)
     zip_code_regex = RegexValidator(
